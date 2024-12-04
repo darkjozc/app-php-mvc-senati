@@ -39,6 +39,8 @@ $router = new Router;
 
 $public_routes = [
     '/web',
+    '/login',
+    '/register',
 ];
 
 //obtener  la ruta actual
@@ -49,6 +51,14 @@ $current_router = str_replace(dirname($_SERVER['SCRIPT_NAME']),'',$current_route
 // var_dump($current_router);
 
 $router ->add('GET','/web','webController', 'index');
+//login register and register
+$router ->add('GET','/login','AuthController', 'showLogin');
+$router ->add('GET','/register','AuthController', 'showRegister');
+
+
+$router ->add('POST','auth/login','AuthController', 'login');
+$router ->add('POST','auth/register','AuthController', 'register');
+
 
 //despachar la ruta actual
 try {
