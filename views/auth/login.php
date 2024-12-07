@@ -28,11 +28,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         <form id="loginForm" onsubmit="login(event)">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Usuario</label>
-                                <input type="text" class="form-control" id="username" required>
+                                <input type="text" class="form-control" id="username" >
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" required>
+                                <input type="password" class="form-control" id="password" >
                             </div>
                             <button type="submit" class="btn btn-primary w-100">
                                 Iniciar Sesión

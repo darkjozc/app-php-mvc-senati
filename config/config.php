@@ -7,6 +7,7 @@ define('DB_NAME','app-php-mvc-senati');
 
 
 
+
   // Configuración de la URL base
   $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
   $server = $_SERVER['SERVER_NAME'];
