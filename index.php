@@ -59,6 +59,26 @@ $router ->add('GET','/register','AuthController', 'showRegister');
 $router ->add('POST','auth/login','AuthController', 'login');
 $router ->add('POST','auth/register','AuthController', 'register');
 
+///////home controller////////////////////////////////
+$router ->add('GET','home','HomeController', 'index');
+
+/////////crud///////////
+$router ->add('GET','productos/','ProductoController', 'index');
+$router ->add('GET','productos/obtener-todo','ProductoController', 'obtenerProducto');
+
+
+$router ->add('POST','productos/guardar-producto','ProductoController', 'guardarProducto');
+$router ->add('POST','productos/actualizar-producto','ProductoController', 'actualizarProducto');
+$router ->add('DELETE','productos/eliminar-producto','ProductoController', 'eliminarProducto');
+$router ->add('GET','productos/buscar-producto','ProductoController', 'buscarProducto');
+
+//////tareas//////
+
+$router ->add('GET','tareas/','TareasController', 'index');
+$router ->add('GET','tareas/obtener-todo','TareasController', 'obtenerTarea');
+// $router ->add('GET','tareas/guardar-tareas','TareasController', 'actualizarTarea');
+// $router ->add('GET','tareas/obtener-todo','TareasController', 'obtenerTarea');
+// $router ->add('GET','tareas/obtener-todo','TareasController', 'obtenerTarea');
 
 //despachar la ruta actual
 try {

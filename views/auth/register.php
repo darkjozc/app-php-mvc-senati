@@ -37,6 +37,14 @@ if (session_status() === PHP_SESSION_NONE) {
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" required>
+                                <div class="mb-3">
+                                <label for="email" class="form-label">rol</label>
+                                <select class="form-select" id="rol" aria-label="Default select example">
+                                   <option selected value="cliente">Cliente</option>
+                                    <option value="user">Usuario</option>
+                                    <option value="admin">Administrador</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña</label>

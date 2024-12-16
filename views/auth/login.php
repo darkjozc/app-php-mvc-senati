@@ -28,11 +28,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         <form id="loginForm" onsubmit="login(event)">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Usuario</label>
-                                <input type="text" class="form-control" id="username" >
+                                <input type="text" class="form-control" id="username">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" >
+                                <input type="password" class="form-control" id="password">
                             </div>
                             <button type="submit" class="btn btn-primary w-100">
                                 Iniciar Sesión
@@ -47,5 +47,6 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
     </div>
     <script src="<?= BASE_URL ?>/assets/js/auth.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 </body>
 </html>

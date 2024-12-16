@@ -23,9 +23,11 @@
   <link href="<?= BASE_URL ?>/assets/web/vendor/aos/aos.css" rel="stylesheet">
   <link href="<?= BASE_URL ?>/assets/web/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="<?= BASE_URL ?>/assets/web/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
   <link href="<?= BASE_URL ?>/assets/web/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/estilos.css">
 
 
   <!-- =======================================================
@@ -74,6 +76,8 @@
             </ul>
           </li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="login">Login</a></li>
+          
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -960,6 +964,30 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- chat bot  -->
+   <div id="chatButton">
+    
+   <i class="fas fa-comments fa-lg"></i>
+   </div>
+   <!-- Modal del chat -->
+<div class="chat-modal" id="chatModal">
+    <div class="chat-header d-flex justify-content-between align-items-center">
+        <span>Chat de Soporte</span>
+        <button type="button" class="btn-close btn-close-white" onclick="toggleChat()"></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <!-- Los mensajes se agregarán aquí dinámicamente -->
+    </div>
+    <div class="chat-input">
+        <div class="input-group">
+            <input type="text" id="messageInput" class="form-control" placeholder="Escribe tu mensaje...">
+            <button class="btn btn-primary" type="button" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
   <!-- Vendor JS Files -->
   <script src="<?= BASE_URL ?>/assets/web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<?= BASE_URL ?>/assets/web/vendor/php-email-form/validate.js"></script>
@@ -970,6 +998,7 @@
 
   <!-- Main JS File -->
   <script src="<?= BASE_URL ?>/assets/web/js/main.js"></script>
+  <script src="<?= BASE_URL ?>/assets/js/chat-bot.js"></script>
 
 </body>
 

@@ -30,4 +30,52 @@ class Usuario {
         }
         return false;
     }
+
+    public function validaUsuario($usuario){
+        $query = "select id_usuario from usuario   where nombre_usuario = :nombre_usuario";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nombre_usuario',$usuario);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function validaEmail($email){
+        $query = "select id_usuario from usuario   where correo = :email";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':email',$email);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function registrarUsuario($usuarioData){
+        //$query = "INSERT INTO usuario(nombre_usuario, clave, correo, nombre_completo, rol)
+        //VALUES(:nombre_usuario, :clave, :correo, :correo, :rol)";
+        $query = "INSERT INTO usuario(nombre_usuario, clave, correo, nombre_completo, rol)
+                   VALUES(:nombre_usuario, :clave, :correo, :nombre_completo, :rol)";
+
+
+        $this->nombre_usuario = $usuarioData['usuario'];
+        $this->clave = password_hash($usuarioData['clave'],PASSWORD_DEFAULT);
+        $this->correo = $usuarioData['email'];
+        $this->nombre_completo = $usuarioData['nombreCompleto'];
+        $this->rol = $usuarioData['rol'];
+
+
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nombre_usuario', $this->nombre_usuario);
+        $stmt->bindParam(':clave',$this->clave);
+        $stmt->bindParam(':correo',$this->correo);
+        $stmt->bindParam(':nombre_completo',$this->nombre_completo);
+        $stmt->bindParam(':rol',$this->rol);
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+ 
+
+    }
 }
