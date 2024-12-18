@@ -72,13 +72,26 @@ $router ->add('POST','productos/actualizar-producto','ProductoController', 'actu
 $router ->add('DELETE','productos/eliminar-producto','ProductoController', 'eliminarProducto');
 $router ->add('GET','productos/buscar-producto','ProductoController', 'buscarProducto');
 
-//////tareas//////
+
+////reporte en pdf y exel
+
+$router ->add('GET','reporte/pdf','ReporteController', 'reportePdf');
+$router ->add('GET','reporte/exel','ReporteController', 'reporteExel');
+
+$router ->add('GET','report/pdf','ReportController', 'reportPdf');
+$router ->add('GET','report/exel','ReportController', 'reportExel');
+
+
+
+
+//////crud tareas//////
 
 $router ->add('GET','tareas/','TareasController', 'index');
 $router ->add('GET','tareas/obtener-todo','TareasController', 'obtenerTarea');
-// $router ->add('GET','tareas/guardar-tareas','TareasController', 'actualizarTarea');
-// $router ->add('GET','tareas/obtener-todo','TareasController', 'obtenerTarea');
-// $router ->add('GET','tareas/obtener-todo','TareasController', 'obtenerTarea');
+$router ->add('POST','tareas/guardar','TareasController', 'guardar');
+$router ->add('POST','tareas/actualizar','TareasController', 'actualizarTarea');
+$router ->add('DELETE','tareas/eliminar','TareasController', 'eliminarTarea');
+$router ->add('GET','tareas/buscar','TareasController', 'buscarProducto');
 
 //despachar la ruta actual
 try {

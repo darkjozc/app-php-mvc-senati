@@ -23,16 +23,19 @@ class Tareas {
     }
 
     public function crearTarea() {
+        // $this->completada = isset($_POST['completada']) ? 0 : 1;
         $query = "INSERT INTO tareas 
-        (titulo, descripcion, fecha_creacion, fecha_vencimiento, prioridad) 
-        VALUES (:titulo, :descripcion, :fecha_creacion, :fecha_vencimiento, :prioridad)";
+        (titulo, descripcion, fecha_creacion, fecha_vencimiento,  completada, prioridad) 
+        VALUES (:titulo, :descripcion, :fecha_creacion, :fecha_vencimiento,  :completada, :prioridad)";
 
-$stmt = $this->conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':titulo', $this->titulo);
         $stmt->bindParam(':descripcion', $this->descripcion);
         $stmt->bindParam(':fecha_creacion', $this->fecha_creacion);
         $stmt->bindParam(':fecha_vencimiento', $this->fecha_vencimiento);
+        $stmt->bindParam(':completada', $this->completada);
         $stmt->bindParam(':prioridad', $this->prioridad);
+       
        
 
         if($stmt->execute()) {
@@ -60,26 +63,24 @@ $stmt = $this->conn->prepare($query);
     // }
 
     public function actualizarTarea() {
-        $query = "UPDATE 
+        $query = "UPDATE tareas
                 SET titulo = :titulo, 
                     descripcion = :descripcion,  
-                    fecha_vencimiento  = :fecha_vencimiento , 
-                    completada = :completada";
-                if ($this->prioridad) {
-                    $query .= ", prioridad = :prioridad";
-                };
-        
+                    fecha_vencimiento  = :fecha_vencimiento ,
+                    fecha_creacion = :fecha_creacion, 
+                    completada = :completada,
+                    prioridad = :prioridad
+                    WHERE id_tareas = :id_tareas";
+
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':titulo', $this->titulo);
         $stmt->bindParam(':descripcion', $this->descripcion);
         $stmt->bindParam(':fecha_vencimiento', $this->fecha_vencimiento);
+        $stmt->bindParam(':fecha_creacion', $this->fecha_creacion);
         $stmt->bindParam(':completada', $this->completada);
+        $stmt->bindParam(':prioridad', $this->prioridad);
         $stmt->bindParam(':id_tareas', $this->id_tareas);
-        
-        if ($this->prioridad) {
-            $stmt->bindParam(':prioridad', $this->prioridad);
-        }
 
         if($stmt->execute()) {
             return true;
@@ -98,17 +99,6 @@ $stmt = $this->conn->prepare($query);
         return false;
     }
 
-    // public function search($term) {
-    //     $query = "SELECT * FROM " . $this->table . " 
-    //              WHERE name LIKE :term 
-    //              ORDER BY name ASC";
-        
-    //     $term = "%{$term}%";
-        
-    //     $stmt = $this->conn->prepare($query);
-    //     $stmt->bindParam(':term', $term);
-        
-    //     $stmt->execute();
-    //     return $stmt;
-    // }
+ 
+     
 }

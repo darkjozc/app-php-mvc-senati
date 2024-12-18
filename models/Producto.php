@@ -59,11 +59,11 @@ class Producto {
     // }
 
     public function actualizarProducto() {
-        $query = "UPDATE 
+        $query = "UPDATE  producto
                 SET nombre = :nombre, 
                     descripcion = :descripcion,  
                     precio = :precio, 
-                    stock = :stock" .
+                    stock = :stock" 
                     ($this->imagen ? ", imagen = :imagen" : "") .
                 " WHERE id_producto = :id_producto";
         

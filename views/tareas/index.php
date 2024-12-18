@@ -3,7 +3,7 @@
         <h2>Listado de Tareas</h2>
     </div>
     <div class="col text-end">
-        <a href="<?= BASE_URL ?>/reports/pdf" class="btn btn-secondary">
+        <a href="<?= BASE_URL ?>/report/pdf" class="btn btn-secondary">
             <i class="fas fa-file-pdf"></i> Exportar PDF
         </a>
         <a href="<?= BASE_URL ?>/reports/excel" class="btn btn-success">
@@ -46,12 +46,11 @@
                 <th>ID</th>
                 <th>Titulo</th>
                 <th>Descripción</th>
-                <th>Estado</th>
+                <th>Completada</th>
                 <th>Prioridad</th>
                 <th>Fecha Creación</th> 
                 <th>Fecha Vencimiento</th>
-                
-                
+                <th>Obciones</th>
             </tr>
         </thead>
         <tbody id="TableTask">
@@ -94,9 +93,17 @@
                             <option value="alta">Alta</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+            <label for="fecha_creacion" class="form-label">Fecha de Creación</label>
+            <input type="datetime-local" class="form-control" id="fecha_creacion" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha_vencimiento" class="form-label">Fecha de Vencimiento</label>
+            <input type="datetime-local" class="form-control" id="fecha_vencimiento" required>
+        </div>
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" id="completed">
-                        <label class="form-check-label" for="completed">Completada</label>
+                        <input class="form-check-input" type="checkbox" id="complet">
+                        <label class="form-check-label" for="complet">Completada</label>
                     </div>
                 </form>
             </div>
@@ -104,7 +111,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <i class="fas fa-times"></i> Cerrar
                 </button>
-                <button type="button" class="btn btn-primary" onclick="saveTask()">
+                <button type="button" class="btn btn-primary" onclick="crear()">
                     <i class="fas fa-save"></i> Guardar
                 </button>
             </div>
@@ -113,7 +120,7 @@
 </div>
 
 <!-- Modal de Confirmación para Eliminar -->
-<div class="modal fade" id="deleteModal" tabindex="-1">
+ <div class="modal fade" id="deleteModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
@@ -161,8 +168,8 @@
                     <dt class="col-sm-3">Fecha Creación:</dt>
                     <dd class="col-sm-9" id="previewCreated"></dd> <!-- Mostrar fecha_creacion -->
 
-                    <dt class="col-sm-3">Fecha Vencimiento:</dt>
-                    <dd class="col-sm-9" id="previewDueDate"></dd>
+                     <dt class="col-sm-3">Fecha Vencimiento:</dt>
+                    <dd class="col-sm-9" id="previewDueDate"></dd> 
 
 
                     <!-- <dt class="col-sm-3">Creado:</dt>
@@ -173,5 +180,5 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
-    </div>
-</div>
+    </div> 
+ </div>
